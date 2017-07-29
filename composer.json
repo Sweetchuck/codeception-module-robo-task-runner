@@ -1,0 +1,43 @@
+{
+    "name": "sweetchuck/codeception-module-robo-task-runner",
+    "description": "Runs a Robo task.",
+    "license": "GPL-2.0",
+    "config": {
+        "bin-dir": "bin",
+        "optimize-autoloader": true,
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "codeception/codeception": "^2.3",
+        "consolidation/robo": "^1.1"
+    },
+    "require-dev": {
+        "sweetchuck/git-hooks": "^0.0",
+        "squizlabs/php_codesniffer": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sweetchuck\\Codeception\\Module\\RoboTaskRunner\\": "src/"
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "@deploy-git-hooks"
+        ],
+        "post-update-cmd": [
+            "@deploy-git-hooks"
+        ],
+        "deploy-git-hooks": "\\Sweetchuck\\GitHooks\\Composer\\Scripts::deploy",
+        "githook-pre-commit": [
+            "@lint"
+        ],
+        "lint": [
+            "@lint:composer",
+            "@lint:phpcs"
+        ],
+        "lint:composer": "composer validate",
+        "lint:phpcs": "phpcs"
+    }
+}
