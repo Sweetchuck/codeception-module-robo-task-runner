@@ -56,6 +56,10 @@ class RoboTaskRunner extends CodeceptionModule
         array_unshift($args, 'RoboTaskRunner.php', '--no-ansi');
 
         $containerBackup = Robo::hasContainer() ? Robo::getContainer() : null;
+        if ($containerBackup) {
+            Robo::unsetContainer();
+        }
+
         $container = Robo::createDefaultContainer(null, $this->roboTaskStdOutput[$id]);
         $container->add('output', $this->roboTaskStdOutput[$id], false);
         Robo::setContainer($container);
