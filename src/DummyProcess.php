@@ -19,7 +19,7 @@ class DummyProcess extends Process
     /**
      * @var static[]
      */
-    public static $instances = null;
+    public static $instances = [];
 
     public static function reset(): void
     {
