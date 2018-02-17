@@ -42,7 +42,7 @@ class DummyProcess extends Process
         array $env = null,
         $input = null,
         $timeout = 60,
-        array $options = []
+        array $options = null
     ) {
         parent::__construct($commandline, $cwd, $env, $input, $timeout, $options);
 

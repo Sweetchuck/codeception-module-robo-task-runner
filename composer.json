@@ -12,7 +12,7 @@
     "require": {
         "codeception/codeception": "^2.3",
         "consolidation/robo": "^1.1",
-        "symfony/process": "^3.1 || ^4.0"
+        "symfony/process": "^3.1"
     },
     "require-dev": {
         "sweetchuck/git-hooks": "^0.0",
