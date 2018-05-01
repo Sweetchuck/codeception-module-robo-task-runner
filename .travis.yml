@@ -19,6 +19,7 @@ install:
 
 script:
   - 'composer run lint'
+  - 'composer run test'
 
 after_success:
   - 'bash <(curl -s https://codecov.io/bash)'

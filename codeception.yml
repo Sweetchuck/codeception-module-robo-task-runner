@@ -1,0 +1,28 @@
+
+namespace: Sweetchuck\Codeception\Module\RoboTaskRunner\Test
+
+actor: Tester
+
+paths:
+    tests: tests
+    output: tests/_output
+    support: tests/_support
+    data: tests
+
+
+settings:
+    colors: true
+    bootstrap: _bootstrap.php
+    shuffle: true
+    lint: true
+    memory_limit: 1024M
+
+suites:
+    unit:
+        path: .
+
+coverage:
+    enabled: true
+    whitelist:
+        include:
+            - 'src/*'

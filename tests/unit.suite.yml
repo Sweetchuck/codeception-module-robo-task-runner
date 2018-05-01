@@ -1,0 +1,6 @@
+
+class_name: UnitTester
+modules:
+    enabled:
+        - Asserts
+        - \Sweetchuck\Codeception\Module\RoboTaskRunner\Test\Helper\Unit
