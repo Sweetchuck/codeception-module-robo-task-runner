@@ -38,13 +38,12 @@ class DummyProcess extends Process
      */
     public function __construct(
         $commandline,
-        $cwd = null,
+        string $cwd = null,
         array $env = null,
         $input = null,
-        $timeout = 60,
-        array $options = null
+        ?float $timeout = 60
     ) {
-        parent::__construct($commandline, $cwd, $env, $input, $timeout, $options);
+        parent::__construct($commandline, $cwd, $env, $input, $timeout);
 
         $this->index = static::$counter++;
         static::$instances[$this->index] = $this;
@@ -61,7 +60,7 @@ class DummyProcess extends Process
     /**
      * {@inheritdoc}
      */
-    public function run($callback = null)
+    public function run(callable $callback = null, array $env = array()): int
     {
         return static::$prophecy[$this->index]['exitCode'];
     }

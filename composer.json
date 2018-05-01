@@ -10,9 +10,10 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
+        "php": ">=7.1",
         "codeception/codeception": "^2.3",
         "consolidation/robo": "^1.1",
-        "symfony/process": "^3.1"
+        "symfony/process": "^4.0"
     },
     "require-dev": {
         "sweetchuck/git-hooks": "^0.0",
@@ -20,7 +21,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Sweetchuck\\Codeception\\Module\\RoboTaskRunner\\": "src/"
+            "Sweetchuck\\Codeception\\Module\\RoboTaskRunner\\": "src/",
+            "Sweetchuck\\Codeception\\Module\\RoboTaskRunner\\Tests\\Unit\\": "tests/unit/"
         }
     },
     "scripts": {
@@ -32,13 +34,23 @@
         ],
         "deploy-git-hooks": "\\Sweetchuck\\GitHooks\\Composer\\Scripts::deploy",
         "githook-pre-commit": [
-            "@lint"
+            "@lint",
+            "@test"
         ],
         "lint": [
             "@lint:composer",
             "@lint:phpcs"
         ],
         "lint:composer": "composer validate",
-        "lint:phpcs": "phpcs"
+        "lint:phpcs": "phpcs",
+        "test": [
+            "@test:codecept"
+        ],
+        "test:codecept": [
+            "@test:codecept:prepare",
+            "@test:codecept:run"
+        ],
+        "test:codecept:prepare": "mkdir -p tests/_output/machine/coverage",
+        "test:codecept:run": "phpdbg -qrr \"$(pwd)/bin/codecept\" run --html=human/junit/html/index.html --coverage-html=human/coverage/html --coverage=machine/coverage/coverage.php"
     }
 }
