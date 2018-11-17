@@ -62,6 +62,16 @@ class DummyProcess extends Process
      */
     public function run(callable $callback = null, array $env = array()): int
     {
+        if ($callback) {
+            if (static::$prophecy[$this->index]['stdOutput']) {
+                $callback(static::OUT, static::$prophecy[$this->index]['stdOutput']);
+            }
+
+            if (static::$prophecy[$this->index]['stdError']) {
+                $callback(static::ERR, static::$prophecy[$this->index]['stdErrorOutput']);
+            }
+        }
+
         return static::$prophecy[$this->index]['exitCode'];
     }
 
