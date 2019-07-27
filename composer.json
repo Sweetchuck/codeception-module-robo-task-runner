@@ -11,7 +11,7 @@
     "prefer-stable": true,
     "require": {
         "php": ">=7.1",
-        "codeception/codeception": "^2.3",
+        "codeception/codeception": "^2.0 || ^3.0",
         "consolidation/robo": "^1.1",
         "symfony/process": "^4.0"
     },
