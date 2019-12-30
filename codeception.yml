@@ -10,9 +10,9 @@ paths:
     data: tests
 
 
+bootstrap: _bootstrap.php
 settings:
     colors: true
-    bootstrap: _bootstrap.php
     shuffle: true
     lint: true
     memory_limit: 1024M
