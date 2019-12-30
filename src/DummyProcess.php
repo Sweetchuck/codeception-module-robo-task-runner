@@ -68,7 +68,7 @@ class DummyProcess extends Process
             }
 
             if (static::$prophecy[$this->index]['stdError']) {
-                $callback(static::ERR, static::$prophecy[$this->index]['stdErrorOutput']);
+                $callback(static::ERR, static::$prophecy[$this->index]['stdError']);
             }
         }
 
