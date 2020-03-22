@@ -38,11 +38,14 @@ class RoboTaskRunner extends CodeceptionModule
         return $errorOutput->output;
     }
 
+    /**
+     * @return void
+     */
     public function runRoboTask(
         string $id,
         string $class,
         string ...$args
-    ): void {
+    ) {
         if (isset($this->roboTaskStdOutput[$id])) {
             throw new \InvalidArgumentException();
         }
