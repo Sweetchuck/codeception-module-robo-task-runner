@@ -37,13 +37,13 @@ class DummyProcess extends Process
      * {@inheritdoc}
      */
     public function __construct(
-        $commandline,
+        array $command,
         string $cwd = null,
         array $env = null,
         $input = null,
         ?float $timeout = 60
     ) {
-        parent::__construct($commandline, $cwd, $env, $input, $timeout);
+        parent::__construct($command, $cwd, $env, $input, $timeout);
 
         $this->index = static::$counter++;
         static::$instances[$this->index] = $this;

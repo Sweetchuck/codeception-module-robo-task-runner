@@ -34,7 +34,7 @@ class DummyProcessTest extends \Codeception\Test\Unit
     public function testRun(array $expected): void
     {
         DummyProcess::$prophecy[] = $expected;
-        $dummyProcess = new DummyProcess('false');
+        $dummyProcess = new DummyProcess(['false']);
         $actualExitCode = $dummyProcess->run();
         $actualStdOutput = $dummyProcess->getOutput();
         $actualStdError = $dummyProcess->getErrorOutput();
