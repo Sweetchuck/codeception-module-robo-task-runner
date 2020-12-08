@@ -18,7 +18,7 @@
     "require-dev": {
         "squizlabs/php_codesniffer": "^3.5",
         "phpunit/phpunit": "^8.0",
-        "sweetchuck/git-hooks": "^0.1"
+        "sweetchuck/git-hooks": "^2.x-dev"
     },
     "autoload": {
         "psr-4": {

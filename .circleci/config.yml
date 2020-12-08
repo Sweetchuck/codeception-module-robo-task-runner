@@ -24,15 +24,6 @@ executors:
                 name: 'main'
                 image: 'circleci/php:7.3'
 
-    php702:
-        environment:
-            <<: *env_composer
-
-        docker:
-            -
-                name: 'main'
-                image: 'circleci/php:7.2'
-
 commands:
     composer_install:
         description: 'Install Composer dependencies with cache restore and save'
@@ -101,13 +92,13 @@ commands:
 
 jobs:
     build:
-        executor: 'php702'
+        executor: 'php703'
         working_directory: '~/repo'
         steps:
             - 'checkout'
             - 'composer_install'
     lint:
-        executor: 'php702'
+        executor: 'php703'
         working_directory: '~/repo'
         steps:
             - 'checkout'
@@ -122,13 +113,6 @@ jobs:
             - 'test_unit'
     test_php703:
         executor: 'php703'
-        working_directory: '~/repo'
-        steps:
-            - 'checkout'
-            - 'composer_install'
-            - 'test_unit'
-    test_php702:
-        executor: 'php702'
         working_directory: '~/repo'
         steps:
             - 'checkout'
@@ -150,9 +134,5 @@ workflows:
                         - build
             -
                 test_php703:
-                    requires:
-                        - build
-            -
-                test_php702:
                     requires:
                         - build
