@@ -16,7 +16,7 @@ class DummyProcessHelper extends ProcessHelper
         $error = null,
         callable $callback = null,
         $verbosity = OutputInterface::VERBOSITY_VERY_VERBOSE
-    ) {
+    ): Process {
         $cwd = null;
         $envVars = null;
         $input = null;
