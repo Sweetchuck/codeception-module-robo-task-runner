@@ -35,6 +35,9 @@ class DummyProcessHelper extends ProcessHelper
             return DummyProcess::fromShellCommandline($cmd, $cwd, $envVars, $input, $timeout);
         }
 
-        return new DummyProcess($cmd, $cwd, $envVars, $input, $timeout);
+        $process = new DummyProcess($cmd, $cwd, $envVars, $input, $timeout);
+        $process->run($callback);
+
+        return $process;
     }
 }

@@ -1,4 +1,7 @@
 
 /bin/
 /tests/_output/
+/tests/*.suite.yml
 /vendor/
+
+/codeception.yml

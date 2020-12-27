@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fc073b44d3b9ddefd2a9f3839b6b425d",
+    "content-hash": "9e1a0c8d43663f411cc7fea0451bb06d",
     "packages": [
         {
             "name": "behat/gherkin",
@@ -4341,6 +4341,7 @@
                 "sweetchuck/robo-git": "^0.3",
                 "sweetchuck/robo-phpcs": "^0.2"
             },
+            "default-branch": true,
             "type": "composer-plugin",
             "extra": {
                 "class": "\\Sweetchuck\\GitHooks\\Composer\\Plugin",
@@ -4362,7 +4363,7 @@
                 "issues": "https://github.com/Sweetchuck/git-hooks/issues",
                 "source": "https://github.com/Sweetchuck/git-hooks/tree/2.x"
             },
-            "time": "2020-10-25T15:42:29+00:00"
+            "time": "2020-12-09T21:30:27+00:00"
         },
         {
             "name": "webmozart/path-util",
@@ -4423,7 +4424,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.2"
+        "php": ">=7.3"
     },
     "platform-dev": [],
     "plugin-api-version": "2.0.0"
