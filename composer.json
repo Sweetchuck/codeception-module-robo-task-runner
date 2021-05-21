@@ -10,9 +10,9 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": ">=7.3",
+        "php": ">=7.4",
         "codeception/codeception": "^4.0",
-        "consolidation/robo": "^2.0",
+        "consolidation/robo": "^3.0",
         "symfony/process": "^4.0 || ^5.0"
     },
     "require-dev": {
@@ -27,13 +27,6 @@
         }
     },
     "scripts": {
-        "post-install-cmd": [
-            "@deploy-git-hooks"
-        ],
-        "post-update-cmd": [
-            "@deploy-git-hooks"
-        ],
-        "deploy-git-hooks": "\\Sweetchuck\\GitHooks\\Composer\\Scripts::deploy",
         "githook-pre-commit": [
             "@lint",
             "@test"
