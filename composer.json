@@ -27,7 +27,7 @@
         }
     },
     "scripts": {
-        "githook-pre-commit": [
+        "githook:pre-commit": [
             "@lint",
             "@test"
         ],
@@ -38,13 +38,8 @@
         "lint:composer": "composer validate",
         "lint:phpcs": "phpcs",
         "test": [
-            "@test:codecept"
+            "@test:unit"
         ],
-        "test:codecept": [
-            "@test:codecept:prepare",
-            "@test:codecept:run"
-        ],
-        "test:codecept:prepare": "mkdir -p tests/_output/machine/coverage",
-        "test:codecept:run": "phpdbg -qrr \"$(pwd)/bin/codecept\" run --html=human/junit/html/index.html --coverage-html=human/coverage/html --coverage=machine/coverage/coverage.php"
+        "test:unit": "phpdbg -qrr \"$(pwd)/bin/codecept\" run --html=human/junit/html/index.html --coverage-html=human/coverage/html --xml=machine/junit/junit.xml --coverage=machine/coverage/coverage.php --coverage-xml=machine/coverage/coverage.xml"
     }
 }

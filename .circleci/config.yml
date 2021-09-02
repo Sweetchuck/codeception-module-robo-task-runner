@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+    codecov: 'codecov/codecov@3.0.0'
+
 .env_common: &env_common
     SHELL: '/bin/bash'
 
@@ -10,9 +13,6 @@ version: 2.1
     COMPOSER_NO_INTERACTION: '1'
     COMPOSER_MEMORY_LIMIT: '-1'
     COMPOSER_DISABLE_XDEBUG_WARN: '1'
-
-orbs:
-    codecov: 'codecov/codecov@1.2.0'
 
 executors:
     php800:
@@ -25,6 +25,7 @@ executors:
             -
                 name: 'main'
                 image: 'circleci/php:8.0'
+
     php704:
         environment:
             <<: *env_common
@@ -44,7 +45,7 @@ commands:
                 restore_cache:
                     name: 'Composer - cache restore'
                     keys:
-                        - 'composer-{{ checksum "./composer.lock" }}-1'
+                        - 'composer-{{ checksum "./composer.lock" }}-2'
 
             -
                 run:
@@ -55,37 +56,26 @@ commands:
             -
                 save_cache:
                     name: 'Composer - cache save'
-                    key: 'composer-{{ checksum "./composer.lock" }}-1'
+                    key: 'composer-{{ checksum "./composer.lock" }}-2'
                     paths:
                         - '~/.composer/cache/'
+                        - '~/.cache/composer/'
 
-    lint_phpcs:
-        description: 'Run PHPCS'
+    lint:
+        description: 'Run lint'
         steps:
             -
                 run:
                     name: 'Run PHPCS'
-                    command: 'bin/phpcs'
+                    command: 'composer run lint'
 
     test_unit:
         description: 'Run unit tests'
         steps:
             -
                 run:
-                    name: 'Prepare output directory'
-                    command: |-
-                        mkdir -p \
-                            tests/_output/machine/coverage \
-                            tests/_output/machine/junit
-            -
-                run:
                     name: 'Run unit tests'
-                    command: |
-                        phpdbg -qrr "$(pwd)/bin/codecept" \
-                            run \
-                            --xml=machine/junit/junit.xml \
-                            --coverage=machine/coverage/coverage.php \
-                            --coverage-xml=machine/coverage/coverage.xml
+                    command: 'composer run test'
             -
                 store_test_results:
                     name: 'Store unit test results'
@@ -108,7 +98,7 @@ jobs:
         steps:
             - 'checkout'
             - 'composer_install'
-            - 'lint_phpcs'
+            - 'lint'
     test_php800:
         executor: 'php800'
         working_directory: '~/repo'
