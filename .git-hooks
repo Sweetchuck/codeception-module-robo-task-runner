@@ -13,12 +13,12 @@ export COMPOSER_DISABLE_XDEBUG_WARN=1
 
 test -s "${sghBridge}.local" && . "${sghBridge}.local"
 
-composer run -l 2>/dev/null | grep "^  githook-${sghHookName} " 1> /dev/null 2>&1 || myExit 0
+composer run -l 2>/dev/null | grep "^  githook:${sghHookName} " 1> /dev/null 2>&1 || myExit 0
 
 if [ "$sghHasInput" = 'true' ]; then
-    composer "githook-${sghHookName}" $@ <<< $(</dev/stdin) || myExit $?
+    composer "githook:${sghHookName}" $@ <<< $(</dev/stdin) || myExit $?
 else
-    composer "githook-${sghHookName}" $@ || myExit $?
+    composer "githook:${sghHookName}" $@ || myExit $?
 fi
 
 myExit 0
