@@ -3,7 +3,9 @@
     "description": "Runs a Robo task.",
     "license": "GPL-2.0-or-later",
     "config": {
-        "bin-dir": "bin",
+        "allow-plugins": {
+            "sweetchuck/git-hooks": true
+        },
         "optimize-autoloader": true,
         "sort-packages": true
     },
@@ -17,7 +19,7 @@
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "^3.5",
-        "phpunit/phpunit": "^8.0",
+        "phpunit/phpunit": "^9.5",
         "sweetchuck/git-hooks": "^2.x-dev"
     },
     "autoload": {
@@ -40,6 +42,6 @@
         "test": [
             "@test:unit"
         ],
-        "test:unit": "phpdbg -qrr \"$(pwd)/bin/codecept\" run --html=human/junit/html/index.html --coverage-html=human/coverage/html --xml=machine/junit/junit.xml --coverage=machine/coverage/coverage.php --coverage-xml=machine/coverage/coverage.xml"
+        "test:unit": "codecept run --html=human/junit/html/index.html --coverage-html=human/coverage/html --xml=machine/junit/junit.xml --coverage=machine/coverage/coverage.php --coverage-xml=machine/coverage/coverage.xml"
     }
 }
