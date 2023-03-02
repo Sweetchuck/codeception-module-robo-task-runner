@@ -2,6 +2,8 @@
     "name": "sweetchuck/codeception-module-robo-task-runner",
     "description": "Runs a Robo task.",
     "license": "GPL-2.0-or-later",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "config": {
         "allow-plugins": {
             "sweetchuck/git-hooks": true
@@ -9,13 +11,11 @@
         "optimize-autoloader": true,
         "sort-packages": true
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "require": {
-        "php": ">=7.4",
-        "codeception/codeception": "^4.0",
-        "consolidation/robo": "^3.0",
-        "symfony/process": "^4.0 || ^5.0 || ^6.0"
+        "php": ">=8.1",
+        "codeception/codeception": "^5.0",
+        "consolidation/robo": "^4.0",
+        "symfony/process": "^5.0 || ^6.0"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "^3.5",
@@ -42,6 +42,9 @@
         "test": [
             "@test:unit"
         ],
-        "test:unit": "codecept run --html=human/junit/html/index.html --coverage-html=human/coverage/html --xml=machine/junit/junit.xml --coverage=machine/coverage/coverage.php --coverage-xml=machine/coverage/coverage.xml"
+        "test:unit": [
+            "mkdir -p tests/_log/human/junit/html tests/_log/machine/junit",
+            "codecept run --html=human/junit/html/index.html --coverage-html=human/coverage/html --xml=machine/junit/junit.xml --coverage=machine/coverage/coverage.php --coverage-xml=machine/coverage/coverage.xml"
+        ]
     }
 }

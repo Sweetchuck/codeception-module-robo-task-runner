@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace Sweetchuck\Codeception\Module\RoboTaskRunner;
 
 use Codeception\Module as CodeceptionModule;

@@ -4,9 +4,10 @@ declare(strict_types = 1);
 
 namespace Sweetchuck\Codeception\Module\RoboTaskRunner\Tests\Unit;
 
+use Codeception\Test\Unit;
 use Sweetchuck\Codeception\Module\RoboTaskRunner\DummyProcess;
 
-class DummyProcessTest extends \Codeception\Test\Unit
+class DummyProcessTest extends Unit
 {
     public function casesRun(): array
     {

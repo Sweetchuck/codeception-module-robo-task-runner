@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace Sweetchuck\Codeception\Module\RoboTaskRunner;
 
 use Codeception\Lib\Console\Output as ConsoleOutput;
@@ -7,25 +9,16 @@ use Codeception\Lib\Console\Output as ConsoleOutput;
 class DummyOutput extends ConsoleOutput
 {
 
-    /**
-     * @var int
-     */
-    protected static $instanceCounter = 0;
+    protected static int $instanceCounter = 0;
 
-    /**
-     * @var string
-     */
-    public $output = '';
+    public string $output = '';
 
-    /**
-     * @var int
-     */
-    public $instanceId = 0;
+    public int $instanceId = 0;
 
     /**
      * {@inheritdoc}
      */
-    public function __construct($config)
+    public function __construct(array $config)
     {
         parent::__construct($config);
         $this->instanceId = static::$instanceCounter++;
@@ -41,7 +34,7 @@ class DummyOutput extends ConsoleOutput
     /**
      * {@inheritdoc}
      */
-    protected function doWrite($message, $newline)
+    protected function doWrite(string $message, bool $newline)
     {
         $this->output .= $message . ($newline ? "\n" : '');
     }

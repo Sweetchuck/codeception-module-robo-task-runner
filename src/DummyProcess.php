@@ -1,25 +1,21 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace Sweetchuck\Codeception\Module\RoboTaskRunner;
 
 use Symfony\Component\Process\Process;
 
 class DummyProcess extends Process
 {
-    /**
-     * @var array
-     */
-    public static $prophecy = [];
+    public static array $prophecy = [];
 
-    /**
-     * @var int
-     */
-    protected static $counter = 0;
+    protected static int $counter = 0;
 
     /**
      * @var static[]
      */
-    public static $instances = [];
+    public static array $instances = [];
 
     public static function reset(): void
     {
@@ -28,10 +24,7 @@ class DummyProcess extends Process
         static::$instances = [];
     }
 
-    /**
-     * @var int
-     */
-    protected $index = 0;
+    protected int $index = 0;
 
     /**
      * {@inheritdoc}
@@ -78,7 +71,7 @@ class DummyProcess extends Process
     /**
      * {@inheritdoc}
      */
-    public function getExitCode()
+    public function getExitCode(): ?int
     {
         return static::$prophecy[$this->index]['exitCode'];
     }
@@ -86,7 +79,7 @@ class DummyProcess extends Process
     /**
      * {@inheritdoc}
      */
-    public function getOutput()
+    public function getOutput(): string
     {
         return static::$prophecy[$this->index]['stdOutput'];
     }
@@ -94,7 +87,7 @@ class DummyProcess extends Process
     /**
      * {@inheritdoc}
      */
-    public function getErrorOutput()
+    public function getErrorOutput(): string
     {
         return static::$prophecy[$this->index]['stdError'];
     }
