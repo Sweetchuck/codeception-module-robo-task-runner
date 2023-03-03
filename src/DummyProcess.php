@@ -40,6 +40,14 @@ class DummyProcess extends Process
 
         $this->index = static::$counter++;
         static::$instances[$this->index] = $this;
+
+        if (!array_key_exists($this->index, static::$prophecy)) {
+            throw new \LogicException(sprintf(
+                'DummyProcess: there is no prepared prophecy for instance %d; command: %s',
+                $this->index,
+                $this->getCommandLine(),
+            ));
+        }
     }
 
     public function __destruct()
