@@ -32,6 +32,15 @@ executors:
                 name: 'main'
                 image: 'cimg/php:8.2'
 
+    php_plus2:
+        environment:
+            <<: *env_common
+            <<: *env_composer
+        docker:
+            -
+                name: 'main'
+                image: 'cimg/php:8.3'
+
 
 commands:
     install_requirements:
@@ -141,3 +150,4 @@ workflows:
                             executor:
                                 - 'php_min'
                                 - 'php_plus1'
+                                - 'php_plus2'
