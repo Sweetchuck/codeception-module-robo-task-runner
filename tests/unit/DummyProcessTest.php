@@ -7,6 +7,9 @@ namespace Sweetchuck\Codeception\Module\RoboTaskRunner\Tests\Unit;
 use Codeception\Test\Unit;
 use Sweetchuck\Codeception\Module\RoboTaskRunner\DummyProcess;
 
+/**
+ * @covers \Sweetchuck\Codeception\Module\RoboTaskRunner\DummyProcess
+ */
 class DummyProcessTest extends Unit
 {
     public function casesRun(): array

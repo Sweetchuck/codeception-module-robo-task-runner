@@ -34,7 +34,7 @@ class DummyOutput extends ConsoleOutput
     /**
      * {@inheritdoc}
      */
-    protected function doWrite(string $message, bool $newline)
+    protected function doWrite(string $message, bool $newline): void
     {
         $this->output .= $message . ($newline ? "\n" : '');
     }

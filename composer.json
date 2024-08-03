@@ -12,10 +12,10 @@
         "sort-packages": true
     },
     "require": {
-        "php": ">=8.1",
+        "php": ">=8.3",
         "codeception/codeception": "^5.0",
-        "consolidation/robo": "^4.0",
-        "symfony/process": "^5.0 || ^6.0"
+        "consolidation/robo": "^5.0",
+        "symfony/process": "^6.0 || ^7.0"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "^3.5",
