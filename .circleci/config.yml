@@ -7,11 +7,14 @@ orbs:
     COMPOSER_NO_INTERACTION: '1'
     COMPOSER_MEMORY_LIMIT: '-1'
     COMPOSER_DISABLE_XDEBUG_WARN: '1'
+.env_xdebug: &env_xdebug
+    XDEBUG_MODE: 'develop,coverage'
 
 executors:
     php800:
         environment:
             <<: *env_composer
+            <<: *env_xdebug
 
         docker:
             -
@@ -21,6 +24,7 @@ executors:
     php704:
         environment:
             <<: *env_composer
+            <<: *env_xdebug
 
         docker:
             -

@@ -5,7 +5,10 @@
     "config": {
         "bin-dir": "bin",
         "optimize-autoloader": true,
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "sweetchuck/git-hooks": true
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -40,6 +43,6 @@
         "test": [
             "@test:unit"
         ],
-        "test:unit": "phpdbg -qrr \"$(pwd)/bin/codecept\" run --html=human/junit/html/index.html --coverage-html=human/coverage/html --xml=machine/junit/junit.xml --coverage=machine/coverage/coverage.php --coverage-xml=machine/coverage/coverage.xml"
+        "test:unit": "codecept run --html=human/junit/html/index.html --coverage-html=human/coverage/html --xml=machine/junit/junit.xml --coverage=machine/coverage/coverage.php --coverage-xml=machine/coverage/coverage.xml"
     }
 }
